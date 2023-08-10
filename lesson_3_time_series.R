@@ -25,7 +25,9 @@ plot(lst_2000)
 plot(lst_2005)
 plot(lst_2010)
 plot(lst_2015)
+# white corresponds to the presence of snow or ice
 
+#Import the whole set altogheter
 # List of files:
 rlist <- list.files(pattern = "lst")
 rlist
@@ -41,11 +43,17 @@ TGr  # 4 layers
 
 plot(TGr)  # now we have all the images in a single element
 
-plotRGB(TGr, 1, 2, 3, stretch = "Lin")
-plotRGB(TGr, 2, 3, 4, stretch = "Lin")
-
 cl <- colorRampPalette(c("blue","lightblue","pink","red"))(100)
 plot(TGr, col = cl)
+
+dev.off()
+
+plot(TGr$lst_2000, col = cl)
+#or 
+#plot(TGr[[1]], col = cl)
+
+plotRGB(TGr, 1, 2, 3, stretch = "Lin")
+plotRGB(TGr, 2, 3, 4, stretch = "Lin")
 
 dev.off()
 
@@ -85,16 +93,6 @@ en
 # plot everything
 plot(en, col = cl)
 
-# Check by visualizing plot in a multiframe
-par(mfrow = c(1,2))
-plot(en[[1]], col = cl)
-plot(en01, col = cl)
-dev.off()
-
-# Check by looking for differences
-dif_check <- en01 - en[[1]]
-dif_check
-plot(dif_check)
 
 # Plot first and last images
 par(mfrow = c(1,2))
@@ -106,8 +104,7 @@ plot(en113, col = cl)
 
 # Let's see the difference:
 difen <-  en[[1]] - en[[13]]
-cl_dif <- colorRampPalette(c('blue','white','red'))(100) #
-par(mfrow = c(1,1))
+cl_dif <- colorRampPalette(c('blue','white','red'))(100) 
 plot(difen, col = cl_dif)
 
 # plotRGB
