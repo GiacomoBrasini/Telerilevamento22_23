@@ -33,6 +33,8 @@ plot(mean3)
 
 sd3 <- focal(nir, matrix(1/9, 3, 3), fun = sd)
 plot(sd3)
+
+sd7 <- focal(nir,matrix(1/49,7,7),fun = sd)
 dev.off()
 
 # Let's create a dataframe
