@@ -46,7 +46,7 @@ palette <- colorRampPalette(c("pink", "violet", "darkorchid4")) (100)
 
 # Plot the NIR band of the image in different ways
 plot(image_2011$B4_sre, col = new_palette)
-#or
+# or
 plot(image_2011[[4]], col = palette) 
 
 dev.off()  # to clean plots
