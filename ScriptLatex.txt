@@ -1,0 +1,275 @@
+\documentclass{beamer}
+
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+
+\usetheme{Szeged} %Madrid, Berlin, Frankfurt}
+\usecolortheme{spruce}
+
+\title{\textbf{Monitoring the health of the Casentinesi Forests National Park}}
+\subtitle{Geo-Ecological Remote Sensing Project}
+\author{Giacomo Brasini}
+
+\begin{document}
+\maketitle
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+% Sezione 1: introduzione
+\section{Introduction}   
+
+\begin{frame}{Casentinesi Forests}
+\begin{itemize}
+    \item\small \textbf{The Casentinesi Forests, Monte Falterona and Campigna National} Park is situated in the Tuscan-Romagna Apennines along the border between the two regions.
+    \item\small Established in 1993, the \textbf{ecological significance} of the park was officially recognized and it has since been integrated into national and international networks of protected areas. Encompassing approximately \textbf{36,000 hectares}, a significant portion of the park is under strict protection to preserve its natural ecosystems.
+    \item\small It boasts \textbf{rich biodiversity and diverse habitats}, ranging from ancient woodlands to grasslands and wetlands. Predominantly populated by beech, silver fir, and broadleaf trees, the park's forests provide a sanctuary to various wildlife species, including deer, wolves, and golden eagles.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Maps of Casentinesi Forests}
+    \includegraphics[width = 0.60 \textwidth]{Teleriv_image/Forest_image_1.png}
+    \hspace{0.25cm}
+    \includegraphics[width = 0.35 \textwidth]{Teleriv_image/Forest_image_2.png}
+\end{frame}
+
+\begin{frame}{Aim of the project}
+The aim of this analysis by remote sensing is to \textbf{check and understand the condition of the Casentinesi Forests} (inside and around the protected areas) .
+\end{frame}
+
+\section{Materials}
+
+\begin{frame}{Images}
+I downloaded images from the data explorer of \textbf{Creodias}, focusing on the Casentinesi Forests.
+The images are provided by the \textbf{mission Sentinel-2} of the European Space Agency.
+\vspace{6mm}\\
+These images contain \textbf{6 layers}:
+\begin{itemize}
+    \item 1 = Blue
+    \item 2 = Green
+    \item 3 = Red
+    \item 4 = SWIR 1 
+    \item 5 = SWIR 2 
+    \item 6 = NIR
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Images}
+I chose to have a \textbf{range of at most 2 months}. Indeed, the images I used for the analysis have been produced by remote sensing between August and September, hence I shouldn't see substantial differences in the vegetation due to climate and seasons.
+\vspace{5mm}\\ \footnotesize These are the \textbf{sensing date}  of the images I used for this project: 2018/09/26,  2019/09/11,  2020/09/05,  2021/08/11,  2022/08/06,  2023/09/10.
+\vspace{5mm}\\
+\normalsize The range is from the 06\textsuperscript{th} of August to the 26\textsuperscript{th} of September.
+\end{frame}
+
+\begin{frame}{Images}
+\centering
+    \footnotesize 2018 \hspace{3cm} 2019 \hspace{3cm} 2020\\
+    \includegraphics[width = 0.30 \textwidth]{Forest_2018.pdf}
+    \hspace{0.3cm}
+    \includegraphics[width = 0.30 \textwidth]{Forest_2019.pdf}
+    \hspace{0.3cm}
+    \includegraphics[width = 0.30 \textwidth]{Forest_2020.pdf}\\ 
+    \vspace{0.5cm}
+    \footnotesize 2021 \hspace{3cm} 2022 \hspace{3cm} 2023\\
+    \includegraphics[width = 0.30 \textwidth]{Forest_2021.pdf}
+    \hspace{0.3cm}
+    \includegraphics[width = 0.30 \textwidth]{Forest_2022.pdf}
+    \hspace{0.3cm}
+    \includegraphics[width = 0.30 \textwidth]{Forest_2023.pdf}\\
+    \vspace{0.3cm}
+\footnotesize Images of Sentinel-2, from 2018 to 2023: true color and NIR for each year.
+\end{frame}
+
+
+\section{Methods}
+\begin{frame}{NDVI}
+\begin{itemize}
+    \item\small The \textbf{Normalized Difference Vegetation Index} (NDVI) is a widely-used metric for quantifying the health and density of vegetation using remote sensing data.
+    \item\small It is calculated from data at two specific bands: \textbf{red} and \textbf{near-infrared}.
+    \item\small -1 $<$ NDVI $<$ 1   % An area with nothing growing in it will have an NDVI of 0.\\ An area with dense, healthy vegetation will have an NDVI of 1.\\ NDVI values less than 0 suggest a lack of dry land, indeed an ocean will yield an NDVI of -1.
+\vspace{5mm}\\
+\end{itemize}
+    \begin{equation} %ndvi
+        NDVI=\frac{NIR-red}{NIR+red}
+    \label{eq:ndvi}  % to label the equation
+    \end{equation}
+\end{frame}
+
+%\begin{frame}{MSAVI}
+%\begin{itemize}
+%   \item\small The \textbf{Modified Soil-Adjusted Vegetation Index} (MSAVI) is an index similar to NDVI that also takes into account the effect of soil. MSAVI is useful in areas with open land or subject to seasonal changes, as it corrects for the influence of soil on the measurement of vegetation.
+%   \item\small It also is calculated from data at two specific bands:  \textbf{red} and \textbf{near-infrared}.
+%   \vspace{4mm}\\
+%\end{itemize}
+ %   \begin{equation} %msavi
+  %      MSAVI = \frac{2*NIR + 1 -\sqrt{(2*NIR + 1)^{2} - 8*(NIR - red)}}{2}
+   % \label{eq:msavi}  % to label the equation
+    %\end{equation}
+%\end{frame}
+
+\begin{frame}{NDMI}
+\begin{itemize}
+    \item The \textbf{Normalized Difference Moisture Index} (NDMI) is an index to asses the moisture content of vegetation.\\ Helps identify areas of healthy, moisture-rich vegetation versus those experiencing moisture stress or dryness.
+    \item It is calculated by comparing two specific bands: \textbf{near-infrared} (NIR) and \textbf{shortwave infrared} (SWIR I).
+    \item \small -1 $<$ NDMI $<$ 1
+\vspace{5mm}\\
+\end{itemize}
+    \begin{equation} %ndmi
+        NDMI=\frac{NIR - SWIR(I)}{NIR + SWIR(I)}
+    \label{eq:ndmi}
+    \end{equation}  
+\end{frame}
+
+\begin{frame}{NBR}
+    \begin{itemize}
+        \item The \textbf{Normalized Burn Ratio} (NBR) is a metric used to identify burned areas and assess fire severity.\\
+        NBR highlights changes in vegetation cover, allowing for the distinction between healthy vegetation and burned or charred areas.
+        \item It is calculated from data at two specific bands: \textbf{near-infrared} (NIR) and \textbf{shortwave infrared} (SWIR II).
+        \item \small -1 $<$ NBR $<$ 1
+    \vspace{5mm}
+    \end{itemize}
+    \begin{equation} %nbr
+        NBR=\frac{NIR - SWIR(II)}{NIR + SWIR(II)}
+    \label{eq:ndmi}
+    \end{equation}
+\end{frame}
+
+\begin{frame}{MSI}
+    \begin{itemize}
+        \item The \textbf{Moisture Stress Index} (MSI) measures vegetation water content and detects water stress in plants, which is crucial for monitoring the health and hydration status of vegetation.
+        \item It is determined by comparing the \textbf{near-infrared} (NIR) and \textbf{shortwave infrared} (SWIR I) bands.
+    \vspace{5mm}
+    \end{itemize}
+    \begin{equation} %msi
+        MSI=\frac{SWIR(II)}{NIR}
+    \label{eq:ndmi}
+    \end{equation}
+\end{frame}
+
+\begin{frame}{PCA}
+\begin{itemize}
+    \item\small \textbf{Principal component analysis} (PCA) is a technique for analyzing large datasets containing a high number of features per observation.
+    \item\small PCA \textbf{increase the interpretability} of data while preserving the maximum amount of information and enabling the visualization of multidimensional data.
+    \item\small The plot returns indications of areas characterized by \textbf{greater variance}, making it possible to identify areas of high vulnerability.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Land Cover}
+\small \textbf{Land cover is the physical material at the surface of Earth}.\\ Land cover maps represent spatial information on different types (classes) of physical coverage of the Earth's surface.\\ Dynamic land cover maps include transitions of land cover classes over time and hence capture \textbf{land cover changes}.
+\vspace{6mm}\\
+I chose 3 classes for the classification of land cover:
+\begin{itemize}
+    \item class 1: bare soil, urban areas;
+    \item class 2: low vegetation, crops;
+    \item class 3: forest.
+\end{itemize}
+\end{frame}
+
+\section{Results}
+
+\begin{frame}{NDVI}
+    \centering
+    \includegraphics[width = 0.80 \textwidth]{Teleriv_image/NDVI.pdf}
+\end{frame}
+
+\begin{frame}{NDVI}
+    \centering
+    \includegraphics[width = 0.70 \textwidth]{Teleriv_image/NDVI_def.pdf}
+\end{frame}
+
+\begin{frame}{NDMI}
+    \centering
+    \includegraphics[width = 0.80 \textwidth]{Teleriv_image/NDMI.pdf}
+\end{frame}
+
+\begin{frame}{NDMI}
+    \centering
+    \includegraphics[width = 0.70 \textwidth]{Teleriv_image/NDMI_def.pdf}
+\end{frame}
+
+\begin{frame}{NBR}
+    \centering
+    \includegraphics[width = 0.80 \textwidth]{Teleriv_image/NBR.pdf}
+\end{frame}
+
+\begin{frame}{NBR}
+    \centering
+    \includegraphics[width = 0.70 \textwidth]{Teleriv_image/NBR_def.pdf}
+\end{frame}
+
+\begin{frame}{MSI}
+    \centering
+    \includegraphics[width = 0.80 \textwidth]{Teleriv_image/MSI.pdf}
+\end{frame}
+
+\begin{frame}{MSI}
+    \centering
+    \includegraphics[width = 0.70 \textwidth]{Teleriv_image/MSI_def.pdf}
+\end{frame}
+
+\begin{frame}{PCA}
+    Summary PCA
+  \begin{table}[htbp]
+  \centering
+  \begin{tabular}{lrrrr}
+    \toprule
+     & PC1 & PC2 & PC3 & PC4 \\
+    \midrule
+    Standard Deviation & 0.1560 & 0.03848 & 0.02127 & 0.008776 \\
+    Proportion of Variance & 0.9237 & 0.05618 & 0.01717 & 0.002920 \\
+    Cumulative Proportion & 0.9237 & 0.97991 & 0.99708 & 1.00000 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{PCA}
+\small PC1\\
+    \centering
+    \includegraphics[width = 0.80 \textwidth]{Teleriv_image/PCA.pdf}
+\end{frame}
+
+\begin{frame}{Land Cover}
+    \centering
+    \includegraphics[width = 0.70 \textwidth]{Teleriv_image/classes.pdf}\\
+    \footnotesize Images that show the classification used for the \textbf{land cover}.
+\end{frame}
+
+\begin{frame}{Land Cover}
+\small{Results of land cover analysis:}
+\vspace{4mm}\\
+    \includegraphics[width = 0.48 \textwidth, height = 5cm]{Teleriv_image/geombar_plot.pdf}
+ \hspace{1mm}
+    \includegraphics[width = 0.48 \textwidth, height = 5cm]{Teleriv_image/geomline_plot.pdf}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}{Conclusion}
+\begin{itemize} 
+\item  With PCA between indexes, areas within the study area showing \textbf{lower vulnerability were surveyed}.
+\item \pause Slight differences in \textbf{land cover} have been detected.\\
+ These differences could be due to deforestation and landslides. So this results are good to be compared for further investigations.
+\end{itemize}
+\end{frame}
+
+\section*{}
+\appendix
+\begin{frame}{GitHub}
+Here you can find my script on GitHub:
+\vspace{5mm}\\
+\begin{center}
+   \href{https://github.com/GiacomoBrasini/Telerilevamento22_23}{https://github.com/GiacomoBrasini/Telerilevamento22\_23}
+\end{center}
+%mettere quello del codice d'esame
+\end{frame}
+
+\begin{frame}
+    \centering \textbf{Thanks for your attention!}
+\end{frame}
+
+\end{document}
