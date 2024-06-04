@@ -99,17 +99,6 @@ I chose to have a \textbf{range of at most 2 months}. Indeed, the images I used 
     \end{equation}
 \end{frame}
 
-%\begin{frame}{MSAVI}
-%\begin{itemize}
-%   \item\small The \textbf{Modified Soil-Adjusted Vegetation Index} (MSAVI) is an index similar to NDVI that also takes into account the effect of soil. MSAVI is useful in areas with open land or subject to seasonal changes, as it corrects for the influence of soil on the measurement of vegetation.
-%   \item\small It also is calculated from data at two specific bands:  \textbf{red} and \textbf{near-infrared}.
-%   \vspace{4mm}\\
-%\end{itemize}
- %   \begin{equation} %msavi
-  %      MSAVI = \frac{2*NIR + 1 -\sqrt{(2*NIR + 1)^{2} - 8*(NIR - red)}}{2}
-   % \label{eq:msavi}  % to label the equation
-    %\end{equation}
-%\end{frame}
 
 \begin{frame}{NDMI}
 \begin{itemize}
