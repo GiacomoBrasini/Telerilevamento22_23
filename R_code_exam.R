@@ -60,7 +60,7 @@ Forest_2018 <- crop(img_2018, ext)
 
 
 # Plot dell'immagine ritagliata + esportazione in .pdf
-pdf("Forest_2018_prova.pdf") 
+pdf("Forest_2018.pdf") 
 par(mfrow = c(1,2))  # grafici sono disposti in 1 riga e 2 colonne  
 plotRGB(Forest_2018,3,2,1, stretch = "lin") #colori reali
 plotRGB(Forest_2018,6,3,2, stretch = "lin") #NIR
