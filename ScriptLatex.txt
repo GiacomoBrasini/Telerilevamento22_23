@@ -5,7 +5,7 @@
 \usepackage{booktabs}
 
 
-\usetheme{Szeged} %Madrid, Berlin, Frankfurt}
+\usetheme{Szeged}
 \usecolortheme{spruce}
 
 \title{\textbf{Monitoring the health of the Casentinesi Forests National Park}}
