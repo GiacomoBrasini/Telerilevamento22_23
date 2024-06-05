@@ -38,7 +38,7 @@
 \end{frame}
 
 \begin{frame}{Aim of the project}
-The aim of this analysis by remote sensing is to \textbf{check and understand the condition of the Casentinesi Forests} (inside and around the protected areas) .
+The aim of this analysis by remote sensing is to \textbf{check and understand the condition of the Casentinesi Forests},inside and around the protected area.
 \end{frame}
 
 \section{Materials}
@@ -134,7 +134,7 @@ I chose to have a \textbf{range of at most 2 months}. Indeed, the images I used 
     \vspace{5mm}
     \end{itemize}
     \begin{equation} %msi
-        MSI=\frac{SWIR(II)}{NIR}
+        MSI=\frac{SWIR(I)}{NIR}
     \label{eq:ndmi}
     \end{equation}
 \end{frame}
@@ -210,7 +210,7 @@ I chose 3 classes for the classification of land cover:
      & PC1 & PC2 & PC3 & PC4 \\
     \midrule
     Standard Deviation & 0.1560 & 0.03848 & 0.02127 & 0.008776 \\
-    Proportion of Variance & 0.9237 & 0.05618 & 0.01717 & 0.002920 \\
+    Proportion of Variance & 0.9237 & 0.05621 & 0.01717 & 0.002920 \\
     Cumulative Proportion & 0.9237 & 0.97991 & 0.99708 & 1.00000 \\
     \bottomrule
   \end{tabular}
@@ -225,8 +225,13 @@ I chose 3 classes for the classification of land cover:
 
 \begin{frame}{Land Cover}
     \centering
-    \includegraphics[width = 0.70 \textwidth]{Teleriv_image/classes.pdf}\\
-    \footnotesize Images that show the classification used for the \textbf{land cover}.
+    \includegraphics[width = 0.37 \textwidth, height = 3.5cm]{Teleriv_image/classes_2018.pdf}
+    \hspace{2.5mm}
+    \includegraphics[width = 0.37 \textwidth, height = 3.5cm]{Teleriv_image/classes_2023.pdf}
+    \hspace{2.5mm}
+   \adjustbox{raise = 1cm}{\includegraphics[width = 0.17 \textwidth]{Teleriv_image/Legend_class.png}}\\
+    \vspace{10mm}
+    \centering \small Images that show the classification used for the \textbf{land cover}.
 \end{frame}
 
 \begin{frame}{Land Cover}
@@ -240,9 +245,10 @@ I chose 3 classes for the classification of land cover:
 \section{Conclusion}
 \begin{frame}{Conclusion}
 \begin{itemize} 
-\item  With PCA between indexes, areas within the study area showing \textbf{lower vulnerability were surveyed}.
+\item  PCA results can be used to find areas indexes could be interpreted to find areas showing higher variations and, therefore, \textbf{higher vulnerability} and lower resilience. \\[10pt]
 \item \pause Slight differences in \textbf{land cover} have been detected.\\
- These differences could be due to deforestation and landslides. So this results are good to be compared for further investigations.
+ These differences could be due to deforestation and landslides.\\[10pt]
+ \item \pause Statistical analysis of satellite imagery using R proves to be a powerful tool for \textbf{geo-ecological monitoring} and the effective \textbf{management of habitats}.
 \end{itemize}
 \end{frame}
 
