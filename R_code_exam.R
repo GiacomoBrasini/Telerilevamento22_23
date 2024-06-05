@@ -55,15 +55,14 @@ plot(img_2018)  #abbiamo tutte le immagini in un singolo elemento
 
 # Ritaglio l'area di interesse
 ext <- c(712500,740000,4844000,4872500) #coordinate per il ritaglio 
-#ext <- c(712500, 712800, 4844000, 4844300) #prova
 Forest_2018 <- crop(img_2018, ext)
 
 
 # Plot dell'immagine ritagliata + esportazione in .pdf
 pdf("Forest_2018.pdf") 
 par(mfrow = c(1,2))  # grafici sono disposti in 1 riga e 2 colonne  
-plotRGB(Forest_2018,3,2,1, stretch = "lin") #colori reali
-plotRGB(Forest_2018,6,3,2, stretch = "lin") #NIR
+plotRGB(Forest_2018,3,2,1, stretch = "lin") # colori reali
+plotRGB(Forest_2018,6,3,2, stretch = "lin") # NIR
 dev.off()
 
 
@@ -101,35 +100,35 @@ Forest_2023 <- crop(img_2023, ext)
 
 # Plot con RGB l'immagine ritagliata
 
-#Forest_2019
+# Forest_2019
 pdf("Forest_2019.pdf")
 par(mfrow = c(1,2))    
 plotRGB(Forest_2019,3,2,1, stretch = "lin") # colori reali 
 plotRGB(Forest_2019,6,3,2, stretch = "lin") # NIR
 dev.off()
 
-#Forest_2020
+# Forest_2020
 pdf("Forest_2020.pdf")
 par(mfrow = c(1,2))
 plotRGB(Forest_2020,3,2,1, stretch = "lin") # colori reali 
 plotRGB(Forest_2020,6,3,2, stretch = "lin") # NIR
 dev.off()
 
-#Forest_2021
+# Forest_2021
 pdf("Forest_2021.pdf")
 par(mfrow = c(1,2))
 plotRGB(Forest_2021,3,2,1, stretch = "lin") # colori reali 
 plotRGB(Forest_2021,6,3,2, stretch = "lin") # NIR
 dev.off()
 
-#Forest_2022
+# Forest_2022
 pdf("Forest_2022.pdf")
 par(mfrow = c(1,2))
 plotRGB(Forest_2022,3,2,1, stretch = "lin") # colori reali 
 plotRGB(Forest_2022,6,3,2, stretch = "lin") # NIR
 dev.off()
 
-#Forest_2023
+# Forest_2023
 pdf("Forest_2023.pdf")
 par(mfrow = c(1,2))
 plotRGB(Forest_2023,3,2,1, stretch = "lin") # colori reali 
@@ -161,7 +160,7 @@ plotRGB(Forest_2022,6,3,2, stretch = "lin", main = "2022_NIR")
 plotRGB(Forest_2023,6,3,2, stretch = "lin", main = "2023_NIR")
 dev.off()
 
-#INDICI SPETTRALI ----
+# INDICI SPETTRALI ----
 
 ## NDVI (NORMALIZED DIFFERENCE VEGETATION INDEX) -----
 # NDVI è un indice applicato per quantificare la salute e la densità della vegetazione
@@ -197,7 +196,6 @@ plot(NDVI_2023, col = cl1, main = "NDVI_2023")
 
 dev.off()
 
-
 # Differenza temporale 2018-2023
 NDVI_def <- NDVI_2018 - NDVI_2023   #osservo un  vegetation loss
 #NDVI_def_prova <- NDVI_2023 - NDVI_2018    #osservo un vegetation gain 
@@ -221,8 +219,7 @@ dev.off()
 # Utile per monitorare lo stress idrico nelle piante e può aiutare a valutare la salute 
 # generale della vegetazione in una determinata area.
 
-# NDMI = (NIR - SWIR) / (NIR + SWIR)
-# SWIR in questo calcolo è la riflettanza nella banda del medio infrarosso
+# NDMI = (NIR - SWIR(I)) / (NIR + SWIR(I))
 NDMI_2018 <- (Forest_2018[[6]] - Forest_2018[[4]]) / (Forest_2018[[6]] + Forest_2018[[4]])
 NDMI_2019 <- (Forest_2019[[6]] - Forest_2019[[4]]) / (Forest_2019[[6]] + Forest_2019[[4]])
 NDMI_2020 <- (Forest_2020[[6]] - Forest_2020[[4]]) / (Forest_2020[[6]] + Forest_2020[[4]])
@@ -230,9 +227,9 @@ NDMI_2021 <- (Forest_2021[[6]] - Forest_2021[[4]]) / (Forest_2021[[6]] + Forest_
 NDMI_2022 <- (Forest_2022[[6]] - Forest_2022[[4]]) / (Forest_2022[[6]] + Forest_2022[[4]])
 NDMI_2023 <- (Forest_2023[[6]] - Forest_2023[[4]]) / (Forest_2023[[6]] + Forest_2023[[4]])
 
-#plot NDMI
+# plot NDMI
 pdf("NDMI.pdf")
-par(mfrow = c(2,3), oma = c(2, 1, 2, 1))    #oma (inf, sx, sup, dx)
+par(mfrow = c(2,3), oma = c(2, 1, 2, 1))    # oma(inf, sx, sup, dx)
 plot(NDMI_2018, col = cl1, main = "NDMI_2018")
 plot(NDMI_2019, col = cl1, main = "NDMI_2019")
 plot(NDMI_2020, col = cl1, main = "NDMI_2020")
@@ -243,7 +240,7 @@ dev.off()
 
 # Calcolo la differenza fra NDMI_2018 e NDMI_2023
 NDMI_def <- NDMI_2018 - NDMI_2023
-#cl2 <- magma(100)
+# cl2 <- magma(100)
 
 # Plot di NDMI_def + esportazione in .pdf
 pdf("NDMI_def.pdf")
@@ -254,8 +251,7 @@ dev.off()
 # Indice spettrale applicato principalmente per identificare aree bruciate e 
 # monitorare la rigenerazione della vegetazione post-incendio.
 
-# NBR = (NIR - SWIR) / (NIR + SWIR)
-# SWIR in questo calcolo è la riflettanza nella banda del corto infrarosso
+# NBR = (NIR - SWIR(II)) / (NIR + SWIR(II))
 NBR_2018 <- (Forest_2018[[6]] - Forest_2018[[5]]) / (Forest_2018[[6]] + Forest_2018[[5]])
 NBR_2019 <- (Forest_2019[[6]] - Forest_2019[[5]]) / (Forest_2019[[6]] + Forest_2019[[5]])
 NBR_2020 <- (Forest_2020[[6]] - Forest_2020[[5]]) / (Forest_2020[[6]] + Forest_2020[[5]])
@@ -287,8 +283,7 @@ dev.off()
 # Valuta il contenuto di umidità nelle piante, è utile per monitare siccità e 
 # stress idrico nelle aree forestali.
 
-# MSI = SWIR / NIR
-# SWIR è la riflettanza nel medio infrarosso
+# MSI = SWIR(I) / NIR
 MSI_2018 <- Forest_2018[[4]] / Forest_2018[[6]]
 MSI_2019 <- Forest_2019[[4]] / Forest_2019[[6]]
 MSI_2020 <- Forest_2020[[4]] / Forest_2020[[6]]
@@ -418,7 +413,7 @@ dev.off()
 
 # Percentuali 
 
-process_percentage <- function(Forest_class) {
+process_percentage <- function(Forest_class) {  # creazione di una nuova funzione
   
   # Calcolo delle frequenze
   freq_values <- freq(Forest_class)
@@ -482,7 +477,7 @@ df_classes <- data.frame(
 
 
 # RISULTATI ----
-classes_long <- pivot_longer(df_classes, -year, names_to = "class", values_to = "percentage")
+classes_long <- pivot_longer(df_classes, -year, names_to = "class", values_to = "percentage") # convertire il dataframe da formato largo a formato lungo
 classes_long$class <- factor(classes_long$class, levels = c("bare_soil", "low_vegetation", "forest"))
 
 # Grafico a barre
