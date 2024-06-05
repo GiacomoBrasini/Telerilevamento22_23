@@ -1,11 +1,12 @@
 \documentclass{beamer}
 
 \usepackage{color}
-\usepackage{hyperref}
 \usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{hyperref}
 
-
-\usetheme{Szeged}
+\usetheme{Szeged} 
 \usecolortheme{spruce}
 
 \title{\textbf{Monitoring the health of the Casentinesi Forests National Park}}
