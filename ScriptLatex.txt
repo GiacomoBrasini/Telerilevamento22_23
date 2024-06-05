@@ -9,9 +9,11 @@
 \usetheme{Szeged} 
 \usecolortheme{spruce}
 
+
 \title{\textbf{Monitoring the health of the Casentinesi Forests National Park}}
 \subtitle{Geo-Ecological Remote Sensing Project}
 \author{Giacomo Brasini}
+
 
 \begin{document}
 \maketitle
@@ -162,42 +164,42 @@ I chose 3 classes for the classification of land cover:
 
 \section{Results}
 
-\begin{frame}{NDVI}
+\begin{frame}{NDVI (Normalized Difference Vegetation Index)}
     \centering
     \includegraphics[width = 0.80 \textwidth]{Teleriv_image/NDVI.pdf}
 \end{frame}
 
-\begin{frame}{NDVI}
+\begin{frame}{NDVI (Normalized Difference Vegetation Index)}
     \centering
     \includegraphics[width = 0.70 \textwidth]{Teleriv_image/NDVI_def.pdf}
 \end{frame}
 
-\begin{frame}{NDMI}
+\begin{frame}{NDMI (Normalized Difference Moisture Index)}
     \centering
     \includegraphics[width = 0.80 \textwidth]{Teleriv_image/NDMI.pdf}
 \end{frame}
 
-\begin{frame}{NDMI}
+\begin{frame}{NDMI (Normalized Difference Moisture Index)}
     \centering
     \includegraphics[width = 0.70 \textwidth]{Teleriv_image/NDMI_def.pdf}
 \end{frame}
 
-\begin{frame}{NBR}
+\begin{frame}{NBR (Normalized Burn Ratio)}
     \centering
     \includegraphics[width = 0.80 \textwidth]{Teleriv_image/NBR.pdf}
 \end{frame}
 
-\begin{frame}{NBR}
+\begin{frame}{NBR (Normalized Burn Ratio)}
     \centering
     \includegraphics[width = 0.70 \textwidth]{Teleriv_image/NBR_def.pdf}
 \end{frame}
 
-\begin{frame}{MSI}
+\begin{frame}{MSI (Moisture Stress Index)}
     \centering
     \includegraphics[width = 0.80 \textwidth]{Teleriv_image/MSI.pdf}
 \end{frame}
 
-\begin{frame}{MSI}
+\begin{frame}{MSI (Moisture Stress Index)}
     \centering
     \includegraphics[width = 0.70 \textwidth]{Teleriv_image/MSI_def.pdf}
 \end{frame}
@@ -211,15 +213,16 @@ I chose 3 classes for the classification of land cover:
      & PC1 & PC2 & PC3 & PC4 \\
     \midrule
     Standard Deviation & 0.1560 & 0.03848 & 0.02127 & 0.008776 \\
-    Proportion of Variance & 0.9237 & 0.05621 & 0.01717 & 0.002920 \\
-    Cumulative Proportion & 0.9237 & 0.97991 & 0.99708 & 1.00000 \\
+    Proportion of Variance & \textbf{\textcolor{red}{92.37\%}} & 5.621\% & 1.717\% & 0.2920\% \\
+    Cumulative Proportion & 92.37\% & 97.991\% & 99.708\% & 100\% \\
     \bottomrule
   \end{tabular}
 \end{table}
 \end{frame}
 
 \begin{frame}{PCA}
-\small PC1\\
+\centering \small PC1 difference 2018$-$2023\\
+\vspace{2mm}
     \centering
     \includegraphics[width = 0.80 \textwidth]{Teleriv_image/PCA.pdf}
 \end{frame}
@@ -247,7 +250,7 @@ I chose 3 classes for the classification of land cover:
 \begin{frame}{Conclusion}
 \begin{itemize} 
 \item  PCA results can be used to find areas indexes could be interpreted to find areas showing higher variations and, therefore, \textbf{higher vulnerability} and lower resilience. \\[10pt]
-\item \pause Slight differences in \textbf{land cover} have been detected.\\
+\item \pause Differences in \textbf{land cover} have been detected.\\
  These differences could be due to deforestation and landslides.\\[10pt]
  \item \pause Statistical analysis of satellite imagery using R proves to be a powerful tool for \textbf{geo-ecological monitoring} and the effective \textbf{management of habitats}.
 \end{itemize}
@@ -259,9 +262,9 @@ I chose 3 classes for the classification of land cover:
 Here you can find my script on GitHub:
 \vspace{5mm}\\
 \begin{center}
-   \href{https://github.com/GiacomoBrasini/Telerilevamento22_23}{https://github.com/GiacomoBrasini/Telerilevamento22\_23}
+\href{https://github.com/GiacomoBrasini/Telerilevamento22_23/blob/main/R_code_exam.R}{\textbf{GitHub Repository}}
 \end{center}
-%mettere quello del codice d'esame
+
 \end{frame}
 
 \begin{frame}
